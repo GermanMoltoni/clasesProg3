@@ -1,12 +1,12 @@
 <?php
     //Creo array con enteros
-    $array = array(1,2,3,9,5);
+    $array = array(1,2,3,9,5); //Constructor de Array
     $acumulador=0;
     var_dump($array);
     echo "<BR>";
     $array[1]= 10; // modifico valor de posicion 1
     for($i=0;$i<=5;$i++)
-        array_push($array,$i); //Hago push al array
+        array_push($array,rand(0,99)); //Hago push al array de un numero random
     var_dump($array);//Muestro El Array
     echo "<BR>";
     for($i=0;$i<11;$i++)
