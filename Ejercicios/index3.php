@@ -1,7 +1,7 @@
 <?php
-  $a=9;
-  $b=3;
-  $c=0;
+  $a=-3;
+  $b=-99;
+  $c=33;
   if($a < $b && $a > $c || $a > $b && $a < $c) // c < a < b o b < a < c
     echo $a;
   elseif ($b > $c && $b < $a || $b < $c && $b > $a) // c < b < a o a < b < c
