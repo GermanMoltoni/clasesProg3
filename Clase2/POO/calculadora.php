@@ -4,7 +4,7 @@
      */
     class Calculadora
     {
-        /*function __construct(argument)
+       /* function __construct(argument)
         {
             # code...
         }*/
