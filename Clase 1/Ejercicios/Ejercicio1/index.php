@@ -8,6 +8,7 @@
         $cantNumeros+=1;
     }
     $cantNumeros-=1;
+    $acumulador-=$cantNumeros;
     echo "<BR>"."Cantidad de Numeros: ".$cantNumeros."<BR>"."Suma: ".$acumulador;
 
 ?>
