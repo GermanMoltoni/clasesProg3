@@ -24,8 +24,14 @@ class Triangulo extends FiguraGeometrica
     {
         for($i=0;$i<=$this->_altura;$i++)
         {
-            if($i <= $this->_base/2)
+            if($i < $this->_base/2)
                 echo " ";
+            else
+            {
+                for($j=$i;$j<=$this->_base;$j++)
+                    echo "*";
+            }
+            
             echo "*<BR>";
         }
     }
