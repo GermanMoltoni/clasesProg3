@@ -6,5 +6,5 @@ $rectangulo->Dibujar();
 echo $rectangulo->ToString();
 $triangulo = new triangulo(5,3);
 echo "<BR>".$triangulo->ToString()."<BR>";
-$triangulo->Dibujar();
+$triangulo->Dibujar();// Hacer dibujo de triangulo
 ?>
