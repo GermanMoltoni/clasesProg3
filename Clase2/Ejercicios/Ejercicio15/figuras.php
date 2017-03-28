@@ -25,7 +25,7 @@ abstract class FiguraGeometrica
     }
     function ToString()
     {
-        return "Color: ".$this->_color."Perímetro: ".$this->_perimetro."Superficie: ".$this->_superficie;
+        return "Color: ".$this->_color." Perímetro: ".$this->_perimetro." Superficie: ".$this->_superficie;
     }
     
 }

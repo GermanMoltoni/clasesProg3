@@ -12,11 +12,12 @@ class Rectangulo extends FiguraGeometrica
         parent::__construct();
         $this->_ladoDos=$l2;
         $this->_ladoUno=$l1;
+        $this->CalcularDatos();
     }
     protected function CalcularDatos()
     {
-        parent::$_superficie = $this->_ladoUno*$l2;
-        parent::$_perimetro = $this->_ladoUno*2 + $this->_ladoDos*2;
+        $this->_superficie = $this->_ladoUno*$this->_ladoDos;
+        $this->_perimetro = $this->_ladoUno*2 + $this->_ladoDos*2;
     }
     public function Dibujar()
     {
@@ -31,7 +32,7 @@ class Rectangulo extends FiguraGeometrica
     }
     public function ToString()
     {
-        parent::ToString()."Lado Uno:".$this->_ladoUno." Lado Dos:".$this->_ladoDos;
+        return parent::ToString()." Lado Uno:".$this->_ladoUno." Lado Dos:".$this->_ladoDos;
     }
 
 
