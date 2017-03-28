@@ -28,7 +28,7 @@ class Triangulo extends FiguraGeometrica
                 echo " ";
             else
             {
-                for($j=$i;$j<=$this->_base;$j++)
+                for($j=$i-1;$j<=$this->_base;$j++)
                     echo "*";
             }
             
