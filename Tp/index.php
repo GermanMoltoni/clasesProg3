@@ -8,4 +8,9 @@ $fabrica = new fabrica("HFC");
 $fabrica->AgregarEmpleado($empleado1);
 echo "<BR>".$fabrica->ToString();
 echo $fabrica->CalcularSueldos();
+$fabrica->EliminarEmpleado($empleado1);
+echo "<BR>".$fabrica->ToString();
+$fabrica->AgregarEmpleado($empleado1);
+$fabrica->AgregarEmpleado($empleado1);
+echo "<BR>".$fabrica->ToString();
 ?>

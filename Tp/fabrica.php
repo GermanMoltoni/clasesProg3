@@ -15,6 +15,7 @@ class Fabrica
     function AgregarEmpleado($persona)
     {
         array_push($this->_empleados,$persona);
+        $this->EliminarEmpleadosRepetidos();
     }
     function CalcularSueldos()
     {
@@ -27,11 +28,12 @@ class Fabrica
     }
     function EliminarEmpleado($persona)
     {
-
+        unset($this->_empleados[array_search($persona,$this->_empleados)]);
     }
     private function EliminarEmpleadosRepetidos()
     {
-
+        $aux = array_unique($this->_empleados,SORT_REGULAR);
+        $this->_empleados = $aux;
     }
     function ToString()
     {
