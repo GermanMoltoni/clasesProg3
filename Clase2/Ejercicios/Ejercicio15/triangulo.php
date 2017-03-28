@@ -22,7 +22,12 @@ class Triangulo extends FiguraGeometrica
     }
     public function Dibujar()
     {
-
+        for($i=0;$i<=$this->_altura;$i++)
+        {
+            if($i <= $this->_base/2)
+                echo " ";
+            echo "*<BR>";
+        }
     }
     public function ToString()
     {
