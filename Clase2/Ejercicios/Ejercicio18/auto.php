@@ -14,7 +14,6 @@ class Auto
     {
          $this->_color = $color;
         $this->_marca = $marca;
-       
     }
     function __construct1($marca,$color,$precio)
     {
@@ -33,7 +32,7 @@ class Auto
     }
     static function MostrarAuto($auto)
     {
-        echo "Marca: ".$auto->_marca." Color:".$auto->_color." Precio:".$auto->_precio." Fecha:".$auto->_fecha."<BR>";
+        return "Marca: ".$auto->_marca." Color:".$auto->_color." Precio:".$auto->_precio." Fecha:".$auto->_fecha."<BR>";
     }
      function Equals($auto)
     {
