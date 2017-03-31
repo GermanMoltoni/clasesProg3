@@ -56,7 +56,14 @@ class Vuelo
     {
         echo $this->GetVuelo();
     }
+    static function Add($vuelo1,$vuelo2)
+    {
 
+    }
+    static function Remove($vuelo,$pasajero)
+    {
+        return $vueloFin;
+    }
 }
 
 ?>
