@@ -10,10 +10,11 @@ class Garage
         $this->_autos = array();
         $this->_razonSocial = $razonSocial;
     }
-    function __construct($razonSocial,$precioPorHora)
+    static function GaragePrecio($razonSocial,$precioPorHora)
     {
-        $this->__construct($razonSocial);
-        $this->_precioPorHora = $precioPorHora;
+        $garage = new self($razonSocial);
+        $garage->_precioPorHora = $precioPorHora;
+        return $garage;
     }
     function MostrarGarage()
     {
@@ -42,7 +43,7 @@ class Garage
 
     function Remove($auto)
     {
-        if(!$this->Equals($auto))
+        if($this->Equals($auto))
         {
             unset($this->_autos[array_search($auto,$this->_autos)]);
         }

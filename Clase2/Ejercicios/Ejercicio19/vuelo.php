@@ -17,18 +17,20 @@ class Vuelo
         $this->_empresa = $empresa;
         $this->_listaDePasajeros = array();    
     }
-    function __construct($empresa,$precio,$cantidadMaxima)
+    static function VueloCompleto($empresa,$precio,$cantidadMaxima)
     {
-        $this->__construct($empresa,$precio);
-        $this->_cantidadMaxima = $cantidadMaxima;
+        $vuelo = new self($empresa,$precio);
+        $vuelo->_cantidadMaxima = $cantidadMaxima;
+        return $vuelo;
     }
     function GetVuelo()
     {
-        $retorno "Empresa: ".$this->_empresa." Fecha: ".$this->_fecha." Precio: ".$this->_precio." Cantidad Maxima de Pasajeros: ".$this->_cantidadMaxima."<BR>";
+        $retorno = "Empresa: ".$this->_empresa." Fecha: ".$this->_fecha." Precio: ".$this->_precio." Cantidad Maxima de Pasajeros: ".$this->_cantidadMaxima."<BR>";
         foreach($this->_listaDePasajeros as $pasajero)
         {
             $retorno.=$pasajero->GetInfoPasajero()."<BR>";
         }
+        return $retorno;
     }
     function AgregarPasajero($pasajero)
     {

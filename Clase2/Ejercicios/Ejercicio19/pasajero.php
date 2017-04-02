@@ -8,7 +8,7 @@ class Pasajero
     private $_apellido;
     private $_nombre;
     private $_dni;
-    private $_esPlus
+    private $_esPlus;
     function __construct($apellido,$nombre,$dni,$esPlus)
     {
        $this->_nombre=$nombre;
