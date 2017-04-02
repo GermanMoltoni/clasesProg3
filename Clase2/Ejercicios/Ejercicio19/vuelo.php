@@ -11,18 +11,13 @@ class Vuelo
     private $_listaDePasajeros;
     private $_cantidadMaxima;
 
-    function __construct($empresa,$precio)
+    function __construct($empresa,$precio,$fecha=" ")
     {
         $this->_precio = $precio;
         $this->_empresa = $empresa;
         $this->_listaDePasajeros = array(); 
-        $this->_cantidadMaxima = 160;   
-    }
-    static function VueloCompleto($empresa,$precio,$fecha)
-    {
-        $vuelo = new self($empresa,$precio);
-        $vuelo->_fecha=$fecha;
-        return $vuelo;
+        $this->_cantidadMaxima = 160; 
+        $this->_fecha=$fecha;
     }
     function GetVuelo()
     {

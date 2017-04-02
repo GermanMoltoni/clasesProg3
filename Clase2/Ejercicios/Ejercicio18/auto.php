@@ -10,24 +10,14 @@ class Auto
     private $_precio;
     private $_marca;
     private $_fecha;
-    function __construct($marca,$color)
+    function __construct($marca,$color,$precio=" ",$fecha=" ")
     {
          $this->_color = $color;
         $this->_marca = $marca;
-    }
-    static function AutoPrecio($marca,$color,$precio)
-    {
-        $auto = new self($marca,$color);
-        $auto->_precio = $precio;
-        return $auto;   
+        $this->_precio = $precio;
+        $this->_fecha = $fecha;
     }
     
-    static function AutoFecha($marca,$color,$precio,$fecha)
-    {
-        $auto = auto::AutoPrecio($marca,$color,$precio);
-        $auto->_fecha = $fecha;
-        return $auto;
-    }
     function AgregarImpuesto($impuesto)
     {
         $this->_precio+=$impuesto;

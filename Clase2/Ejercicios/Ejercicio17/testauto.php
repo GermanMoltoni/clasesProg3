@@ -2,9 +2,9 @@
 require_once "auto.php";
 $auto1 = new auto("Peugeot","Negro");
 $auto2 = new auto("Peugeot","Rojo");
-$auto3 =  auto::AutoPrecio("Fiat","Rojo",310000);
-$auto4 = auto::AutoPrecio("Fiat","Rojo",270000);
-$auto5 = auto::AutoFecha("Fiat","Rojo",270000,"25012017");
+$auto3 =  new auto("Fiat","Rojo",310000);
+$auto4 = new auto("Fiat","Rojo",270000);
+$auto5 = new auto("Fiat","Rojo",270000,"25012017");
 $auto3->AgregarImpuesto(1500);
 $auto4->AgregarImpuesto(1500);
 $auto5->AgregarImpuesto(1500);

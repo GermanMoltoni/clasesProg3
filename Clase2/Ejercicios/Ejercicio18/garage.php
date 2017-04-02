@@ -5,17 +5,13 @@ class Garage
     private $_razonSocial;
     private $_precioPorHora;
     private $_autos;
-    function __construct($razonSocial)
+    function __construct($razonSocial,$precioPorHora=0)
     {
         $this->_autos = array();
         $this->_razonSocial = $razonSocial;
+        $this->_precioPorHora = $precioPorHora;
     }
-    static function GaragePrecio($razonSocial,$precioPorHora)
-    {
-        $garage = new self($razonSocial);
-        $garage->_precioPorHora = $precioPorHora;
-        return $garage;
-    }
+
     function MostrarGarage()
     {
         $retorno = "Razon Social: ".$this->_razonSocial." Precio Por Hora: ".$this->_precioPorHora."<BR>";
