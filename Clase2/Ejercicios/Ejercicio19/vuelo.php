@@ -15,12 +15,13 @@ class Vuelo
     {
         $this->_precio = $precio;
         $this->_empresa = $empresa;
-        $this->_listaDePasajeros = array();    
+        $this->_listaDePasajeros = array(); 
+        $this->_cantidadMaxima = 160;   
     }
-    static function VueloCompleto($empresa,$precio,$cantidadMaxima)
+    static function VueloCompleto($empresa,$precio,$fecha)
     {
         $vuelo = new self($empresa,$precio);
-        $vuelo->_cantidadMaxima = $cantidadMaxima;
+        $vuelo->_fecha=$fecha;
         return $vuelo;
     }
     function GetVuelo()
@@ -32,6 +33,7 @@ class Vuelo
         }
         return $retorno;
     }
+
     function AgregarPasajero($pasajero)
     {
         $flag=true;
@@ -43,7 +45,7 @@ class Vuelo
                 break;
             }
         }
-        if($this->_capacidadMaxima > count($this->_listaDePasajeros))
+        if($this->_cantidadMaxima > count($this->_listaDePasajeros))
         {
             if($flag)
                 array_push($this->_listaDePasajeros,$pasajero);
@@ -60,11 +62,39 @@ class Vuelo
     }
     static function Add($vuelo1,$vuelo2)
     {
-
+        $ganancia=0;
+        foreach($vuelo1->_listaDePasajeros as $pasajero)
+        {
+            if($pasajero->PasajeroPlus())
+                $ganancia+=$vuelo1->_precio*0.8;
+            else
+                $ganancia+=$vuelo1->_precio;
+        }
+        foreach($vuelo2->_listaDePasajeros as $pasajero)
+        {
+            if($pasajero->PasajeroPlus())
+                $ganancia+=$vuelo2->_precio*0.8;
+            else
+                $ganancia+=$vuelo2->_precio;
+        }
+        return $ganancia;
     }
     static function Remove($vuelo,$pasajero)
     {
-        return $vueloFin;
+        $flag=false;
+        foreach($vuelo->_listaDePasajeros as $p)
+        {
+            if($p->Equals($pasajero))
+            {
+                $flag=true;
+                break;
+            }
+        }
+        if($flag)
+            unset($vuelo->_listaDePasajeros[array_search($pasajero,$vuelo->_listaDePasajeros)]);
+        else
+            echo "Pasajero no encontrado";
+        return $vuelo;
     }
 }
 
