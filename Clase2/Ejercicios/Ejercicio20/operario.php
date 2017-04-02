@@ -11,9 +11,9 @@ class Operario
     function __construct($legajo,$apellido,$nombre)
     {
          $this->_apellido=$apellido;
-    $this->_legajo=$legajo;
-    $this->_nombre=$nombre;
-    $this->_salario=0;
+        $this->_legajo=$legajo;
+        $this->_nombre=$nombre;
+        $this->_salario=0;
     }
     function Equals($op1)
     {
@@ -31,9 +31,9 @@ class Operario
     }
     function Mostrar()
     {
-        return $this->GetNombreApellido()." Salario: ".$this->_salario." Legajo:".$this->_legajo;
+        return $this->GetNombreApellido()." Salario: ".$this->GetSalario()." Legajo:".$this->_legajo;
     }
-    function Mostrar($op)
+    static function MostrarOperario($op)
     {
         echo $op->Mostrar();
     }
