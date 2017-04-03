@@ -57,7 +57,7 @@ class Fabrica
     function GuardarFabrica()
     {
         $path="fabrica.txt";
-        $archivo = fopen($path,"w");
+        $archivo = fopen($path,"w"); 
         foreach($this->_empleados as $empleado)
             fwrite($archivo,$empleado->ToString()."\n");
         fclose($archivo);
