@@ -44,6 +44,40 @@ class Fabrica
         }
         return $retorno;
     }
+    /*
+        Guardar array en Archivo :
+                                    1-Transformar obj a string con separador
+                                    2-Guardar un obj por renglon
+        Leer Array en Archivo:
+                                1-Leer renglon por renglon
+                                2-Utilizar explode
+                                3-Crear Obj
+                                4-Agregar el objeto al array
+    */
+    function GuardarFabrica()
+    {
+        $path="fabrica.txt";
+        $archivo = fopen($path,"w");
+        foreach($this->_empleados as $empleado)
+            fwrite($archivo,$empleado->ToString()."\n");
+        fclose($archivo);
+    }
+    function LeerFabrica()
+    {
+        $path="fabrica.txt";
+        $empleados = array();
+        if(file_exists($path))
+        {
+            $archivo = fopen($path,"r");
+            while(!feof($archivo))
+            {
+                $empleado = explode("-",fgets($archivo));
+                array_push($empleados,new empleado($empleado[0],$empleado[1],$empleado[3],$empleado[2],$empleado[5],$empleado[4]));
+            }
+        }
+        fclose($archivo);
+        return $empleados;
+    }
 }
 
 ?>
