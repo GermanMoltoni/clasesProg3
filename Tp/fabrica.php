@@ -56,15 +56,15 @@ class Fabrica
     */
     function GuardarFabrica()
     {
-        $path="fabrica.txt";
+        $path="empleados.txt";
         $archivo = fopen($path,"w"); 
         foreach($this->_empleados as $empleado)
-            fwrite($archivo,$empleado->ToString()."\n");
+            fwrite($archivo,$empleado->ToString()."\r\n");
         fclose($archivo);
     }
     function LeerFabrica()
     {
-        $path="fabrica.txt";
+        $path="empleados.txt";
         $empleados = array();
         if(file_exists($path))
         {

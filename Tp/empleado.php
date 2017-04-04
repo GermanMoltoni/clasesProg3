@@ -29,6 +29,14 @@ class Empleado extends Persona
     {
         return parent::ToString()."-".$this->getSueldo()."-".$this->getLegajo();
     }
+    function guardarEmpleado()
+    {
+        $path="empleados.txt";
+        $archivo = fopen($path,"a"); 
+        fwrite($archivo,$this->ToString()."\r\n");
+        fclose($archivo);
+    }
+
 }
 
 ?>

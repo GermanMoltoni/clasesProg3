@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tp1</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Alta de Empleado</legend>    
+        <form action="administracion.php" method="POST">
+            Nombre: <input type="text" placeholder="Juan" tabindex="1" name="nombre">&nbsp
+            Apellido: <input type="text" placeholder="Gomez" tabindex="2" name="apellido"><br>
+            Dni: <input type="text" placeholder="22.222.222" name="dni">&nbsp
+            Sexo:<input type="radio" name="sexo" value="masculino">M
+            <input type="radio" name="sexo" value="femenino">F<br>
+            Legajo: <input type="text"  name="legajo"><br>
+            Sueldo:<input type="text" name="sueldo"><br>
+            <button type="submit" name="alta" value="add">Alta</button>
+        </form>
+    </fieldset>   
+</body>
+</html>
