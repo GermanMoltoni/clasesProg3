@@ -7,6 +7,7 @@ class Empleado extends Persona
 {
     protected $_legajo;
     protected $_sueldo;
+    protected $_pathFoto;
     function __construct($nombre,$apellido,$dni,$sexo,$legajo,$sueldo)
     {
         parent::__construct($nombre,$apellido,$dni,$sexo);
@@ -21,20 +22,21 @@ class Empleado extends Persona
     {
         return $this->_sueldo;
     }
+    function getPathFoto()
+    {
+        return $this->_pathFoto;
+    }
+    function setPathFoto($path)
+    {
+        $this->_pathFoto = $path;
+    }
     function Hablar($idioma)
     {
         return "El empleado Habla en ".$idioma;
     }
     function ToString()
     {
-        return parent::ToString()."-".$this->getSueldo()."-".$this->getLegajo();
-    }
-    function guardarEmpleado()
-    {
-        $path="empleados.txt";
-        $archivo = fopen($path,"a"); 
-        fwrite($archivo,$this->ToString()."\r\n");
-        fclose($archivo);
+        return parent::ToString()."-".$this->getSueldo()."-".$this->getLegajo()."-".$this->getPathFoto();
     }
 
 }
