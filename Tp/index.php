@@ -16,5 +16,4 @@ $fabrica->AgregarEmpleado($empleado1);
 $fabrica->AgregarEmpleado($empleado1);
 echo "<BR>".$fabrica->ToString();
 $fabrica->GuardarFabrica();
-$fabrica->LeerFabrica();
 ?>

@@ -10,7 +10,7 @@ class Fabrica
     function __construct($razonSocial)
     {
         $this->_razonSocial = $razonSocial;
-        $this->_empleados = array();
+        $this->_empleados = $this->LeerFabrica();
     }
     function AgregarEmpleado($persona)
     {
@@ -72,10 +72,12 @@ class Fabrica
             while(!feof($archivo))
             {
                 $empleado = explode("-",fgets($archivo));
-                array_push($empleados,new empleado($empleado[0],$empleado[1],$empleado[3],$empleado[2],$empleado[5],$empleado[4]));
+                if(count($empleado) != 1)
+                    array_push($empleados,new empleado($empleado[0],$empleado[1],$empleado[3],$empleado[2],$empleado[5],$empleado[4]));
             }
+            fclose($archivo);
         }
-        fclose($archivo);
+        
         return $empleados;
     }
 }
