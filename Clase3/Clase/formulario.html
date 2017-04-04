@@ -5,11 +5,19 @@
     <title>Programacion Form</title>
 </head>
 <body>
-    <form action="server/guardar.php">
+    <!-- Se ingresara el nombre de la persona el nombre del archivo, al presionar el boton
+    guardar, se verificara si el archivo existe
+    De ya existir el archivo Se copiara y se movera  a la carpeta backup, cambiandole el nombre
+    por el nombre mas la fecha
+    Al presionar el boton leer, si el archivo existe, se mostrara el contenido, de no existir el archivo
+    se informara que no existe.-->
+    <form action="server/guardar.php" method="POST">
         <input type="text" name="escribir" placeholder="Nombre">
+        <br>
+        <input type="text" name="archivo" placeholder="archivo">
+        <br>
         <input type="submit" value="Guardar" name="guardar">
         <br>
-        <input type="text" placeholder="Aca va su nombre" name="leer">
         <input type="submit" value="Leer" name="leer">
     </form>
 </body>
