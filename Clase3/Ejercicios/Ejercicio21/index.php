@@ -29,10 +29,17 @@
             }
         }
         fclose($archivo);
-        echo "Palabras con 1 Letra: ".$cantidadLetras[0]."<br>";
-        echo "Palabras con 2 Letras: ".$cantidadLetras[1]."<br>";
-        echo "Palabras con 3 Letras: ".$cantidadLetras[2]."<br>";
-        echo "Palabras con 4 o mas Letras: ".$cantidadLetras[3]."<br>";
+        echo "<table border='1'>
+              <th>Letras</th>
+              <th>Cantidad de Palabras</th>";
+              
+              
+              
+        echo "<tr><td>1 </td><td>".$cantidadLetras[0]."</td></tr>";
+        echo "<tr><td>2 </td><td>".$cantidadLetras[1]."</td></tr>";
+        echo "<tr><td>3 </td><td>".$cantidadLetras[2]."</td></tr>";
+        echo "<tr><td>4 o mas </td><td>".$cantidadLetras[3]."</td></tr>";
+        echo"</table>";
     }
         
 
