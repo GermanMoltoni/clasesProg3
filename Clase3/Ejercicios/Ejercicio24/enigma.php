@@ -10,14 +10,19 @@ class Enigma
     }
     static function Encriptar($mensaje)
     {
+        $cifrado = '';
         if(strlen($mensaje) != 0)
         {
             foreach(str_split($mensaje) as $caracter)
             {
-                echo ord($caracter) + 200;
+                $cifrado.=ord($caracter) + 200;
             }
+            // $archivo = fopen($path,"w");
+            // fwrite($archivo,$cifrado);
+            // fclose($archivo);
         }
     }
+    static function DesEncriptar($path)
 }
 
 
