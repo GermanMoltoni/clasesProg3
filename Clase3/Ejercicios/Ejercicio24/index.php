@@ -1,4 +1,4 @@
 <?php
 include_once "enigma.php";
-enigma::Encriptar("P o");
+enigma::Encriptar("Hola");
 ?>

@@ -11,13 +11,14 @@ class Enigma
     static function Encriptar($mensaje)
     {
         $cifrado = '';
+        $path="prueba.txt";
         if(strlen($mensaje) != 0)
         {
             foreach(str_split($mensaje) as $caracter)
                 $cifrado.=ord($caracter) + 200;
-            // $archivo = fopen($path,"w");
-            // fwrite($archivo,$cifrado);
-            // fclose($archivo);
+            $archivo = fopen($path,"w");
+            fwrite($archivo,$cifrado);
+            fclose($archivo);
         }
     }
     static function DesEncriptar($path)
