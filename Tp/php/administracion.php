@@ -1,7 +1,7 @@
 <?php
     require_once "empleado.php";
     require_once "fabrica.php";
-    $path="datos/empleados.txt";
+    $path="../datos/empleados.txt";
     if(array_key_exists("alta",$_POST) && $_POST['alta'] == "add")
     {
         if(count($_POST['nombre']) != 0 && count($_POST['apellido']) != 0 && count($_POST['dni']) != 0 && array_key_exists("sexo",$_POST) && count($_POST['sueldo']) != 0 && count($_POST['legajo']) != 0)
@@ -10,7 +10,7 @@
             
             if(verificarFoto($_FILES,$empleado))
             {
-                $archivo = fopen($path,"w");
+                $archivo = fopen($path,"a");
                 fwrite($archivo,$empleado->ToString()."\r\n");
                 fclose($archivo);
                 echo "<a href='mostrar.php'>Mostrar Empleados</a>";
@@ -22,17 +22,19 @@
 
     function verificarFoto($postFile,$empleado)
     {
-        var_dump($postFile);
         $imageTypes = array(IMAGETYPE_GIF,IMAGETYPE_JPEG,IMAGETYPE_PNG,IMAGETYPE_BMP);
         $pathFotos = "../fotos/";
-        $nuevoPath='';
+        $nuevoPath=$nombreDni ='';
         if(count($postFile) != 0)
         {
             $archivos = scandir($pathFotos);// retorna una lista de archivos en array
             $imageType = exif_imagetype($postFile['foto']['tmp_name']);//Retorna la extension de la imagen
             if(!in_array($nuevoPath,$archivos) && in_array($imageType,$imageTypes) && $postFile['foto']['size']> 0 && $postFile['foto']['size']<= 1024000)
             {
-                $nuevoPath=$empleado->getDni()."-".$empleado->getApellido().image_type_to_extension($imageType);
+                $nombreDni = $empleado->getDni()."-".$empleado->getApellido();
+                $nuevoPath=$nombreDni.image_type_to_extension($imageType);
+                if(file_exists($pathFotos.$nuevoPath))
+                    copy($pathFotos.$nuevoPath,"../backup/".$nombreDni.date("_Y_m_d_h_i_s").image_type_to_extension($imageType));
                 if(move_uploaded_file($_FILES['foto']['tmp_name'],$pathFotos.$nuevoPath))
                 {
                     $empleado->setPathFoto($pathFotos.$nuevoPath);
