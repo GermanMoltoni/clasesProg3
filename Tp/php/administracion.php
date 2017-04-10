@@ -15,6 +15,8 @@
                 fclose($archivo);
                 echo "<a href='mostrar.php'>Mostrar Empleados</a>";
             }
+            else
+                echo "El empleado ya se encuentra cargado<br><a href='../index.html'>Inicio</a>";
         }
     }
     else
@@ -27,14 +29,14 @@
         $nuevoPath=$nombreDni ='';
         if(count($postFile) != 0)
         {
-            $archivos = scandir($pathFotos);// retorna una lista de archivos en array
+           // $archivos = scandir($pathFotos);// retorna una lista de archivos en array
             $imageType = exif_imagetype($postFile['foto']['tmp_name']);//Retorna la extension de la imagen
-            if(!in_array($nuevoPath,$archivos) && in_array($imageType,$imageTypes) && $postFile['foto']['size']> 0 && $postFile['foto']['size']<= 1024000)
+            if(in_array($imageType,$imageTypes) && $postFile['foto']['size']> 0 && $postFile['foto']['size']<= 1024000)
             {
                 $nombreDni = $empleado->getDni()."-".$empleado->getApellido();
                 $nuevoPath=$nombreDni.image_type_to_extension($imageType);
-                if(file_exists($pathFotos.$nuevoPath))
-                    copy($pathFotos.$nuevoPath,"../backup/".$nombreDni.date("_Y_m_d_h_i_s").image_type_to_extension($imageType));
+                if(file_exists($pathFotos.$nuevoPath))//!in_array($nuevoPath,$archivos)
+                    return false;//copy($pathFotos.$nuevoPath,"../backup/".$nombreDni.date("_Y_m_d_h_i_s").image_type_to_extension($imageType));
                 if(move_uploaded_file($_FILES['foto']['tmp_name'],$pathFotos.$nuevoPath))
                 {
                     $empleado->setPathFoto($pathFotos.$nuevoPath);
