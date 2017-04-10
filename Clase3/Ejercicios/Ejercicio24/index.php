@@ -1,4 +1,5 @@
 <?php
 include_once "enigma.php";
-enigma::Encriptar("Hola");
+if(enigma::Encriptar("Hola<br> como estas?","prueba.txt"))
+    echo enigma::DesEncriptar("prueba.txt");
 ?>
