@@ -9,7 +9,7 @@
 <body>
     <fieldset>
         <legend>Alta de Empleado</legend>    
-        <form action="php/administracion.php" method="POST">
+        <form enctype="multipart/form-data" action="php/administracion.php" method="POST">
             Nombre: <input type="text" placeholder="Juan" tabindex="1" name="nombre">&nbsp
             Apellido: <input type="text" placeholder="Gomez" tabindex="2" name="apellido"><br>
             Dni: <input type="text" placeholder="22.222.222" name="dni">&nbsp
@@ -17,6 +17,7 @@
             <input type="radio" name="sexo" value="femenino">F<br>
             Legajo: <input type="text"  name="legajo">&nbsp
             Sueldo:<input type="text" name="sueldo"><br>
+            <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
             <input type="file" accept="image/*" name="foto"><br>
             <button type="submit" name="alta" value="add">Alta</button>
         </form>
