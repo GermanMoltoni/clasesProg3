@@ -11,9 +11,10 @@
             if(count($datos) != 1)
                 {
                     $empleado = new empleado($datos[0],$datos[1],$datos[3],$datos[2],$datos[5],$datos[4]);
-                    $empleado->setPathFoto($datos[6]);
+                    $empleado->setPathFoto($datos[6]."-".$datos[7]);
                     array_push($empleados,$empleado);  
-                    echo $empleado->ToString()."<br>";
+
+                    echo $empleado->ToString()."<img src='".$empleado->getPathFoto()."' alt='200' width='299'><br>";
                 }
                   
         }
