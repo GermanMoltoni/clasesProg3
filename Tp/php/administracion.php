@@ -25,7 +25,7 @@
     function verificarFoto($postFile,$empleado)
     {
         $imageTypes = array(IMAGETYPE_GIF,IMAGETYPE_JPEG,IMAGETYPE_PNG,IMAGETYPE_BMP);
-        $pathFotos = "../fotos/";
+        $pathFotos = "../uploads/";
         $nuevoPath=$nombreDni ='';
         if(count($postFile) != 0)
         {
