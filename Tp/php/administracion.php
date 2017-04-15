@@ -23,9 +23,6 @@
             if(verificarFoto($FILES,$empleado))
             {
                 ArrayToFile([$empleado,],$path);
-                /*$archivo = fopen($path,"a");
-                fwrite($archivo,$empleado->ToString()."\r\n");//Modificar segun uso
-                fclose($archivo);*/
                 echo "<a href='mostrar.php'>Mostrar Empleados</a>";
             }
             else
