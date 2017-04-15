@@ -3,21 +3,18 @@
     require_once "fabrica.php";
     $path="../datos/empleados.txt";
     if(array_key_exists("alta",$_POST) && $_POST['alta'] == "add")
-    {
-        baja($_POST,$path);
-        //alta($_POST,$_FILES,$path);
-    }
-/*    if(array_key_exists("mod",$_POST) && $_POST['mod'] == "modif")
-    {
-        modificacion($_POST);
-    }*/
+        alta($_POST,$_FILES,$path);
+    if(array_key_exists("baja",$_POST) && $_POST['baja'] == "baja")
+        baja($_POST,$path);//modificacion($_POST);
     else
         echo "<a href='../index.html'>Inicio</a>";
 
 
 
-
-
+/*
+*   Da el alta de un empleado
+*
+*/
     function alta($POST,$FILES,$path)
     {
         if(count($POST['nombre']) > 0 && count($POST['apellido']) > 0 && count($POST['dni']) > 0 && array_key_exists("sexo",$POST) && count($POST['sueldo']) > 0 && count($POST['legajo']) > 0)
@@ -25,9 +22,10 @@
             $empleado = new empleado($POST['nombre'],$POST['apellido'],$_POST['dni'],$POST['sexo'],$POST['legajo'],$POST['sueldo']);
             if(verificarFoto($FILES,$empleado))
             {
-                $archivo = fopen($path,"a");
+                ArrayToFile([$empleado,],$path);
+                /*$archivo = fopen($path,"a");
                 fwrite($archivo,$empleado->ToString()."\r\n");//Modificar segun uso
-                fclose($archivo);
+                fclose($archivo);*/
                 echo "<a href='mostrar.php'>Mostrar Empleados</a>";
             }
             else
@@ -37,34 +35,36 @@
 
 
 
-
+/*
+*   Realiza la baja de un Empleado y la guarda.
+*
+*/
     function baja($POST,$path)
     {
         $empleados = GetArray($path);
-        $emp ='';
         foreach($empleados as $empleado)
         {
             if($POST['dni'] == $empleado->getDni())
-            {
-                $emp = $empleado;
                 break;
-                
-                }
         }
-       unset($empleados[array_search($emp,$empleados)]);        
-       ArrayToFile($empleados,$path);
-            
-        
+       unset($empleados[array_search($empleado,$empleados)]);        
+       ArrayToFile($empleados,$path,"w");  
     }
-
-    function ArrayToFile($elements,$path)
+/*
+*   Guarda un array en un archivo.
+*
+*/
+    function ArrayToFile($elements,$path,$mode="a")
     {
-        $archivo = fopen($path,"w");
+        $archivo = fopen($path,$mode);
         foreach($elements as $element)
-            fwrite($archivo,$element->ToString()."\r\n");//Modificar segun uso
+            fwrite($archivo,$element->ToString());//Modificar segun uso
         fclose($archivo);
     }
-
+/*
+*   Carga un archivo a un array  y lo retorna
+*
+*/
     function GetArray($path)
     {
         $array = array();
@@ -115,4 +115,5 @@
         return false; 
 
     }
+
 ?>

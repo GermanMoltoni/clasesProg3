@@ -1,5 +1,6 @@
 <?php
     require_once "empleado.php";
+    require_once "administracion.php";
     $path = "../datos/empleados.txt";
     $empleados = array();
     $tabla ='';
