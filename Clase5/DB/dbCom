@@ -1,0 +1,3 @@
+SELECT u.nombre , l.decripcion 
+FROM usuario AS u, localidad AS l 
+WHERE u.id_loc = l.id AND id > 2
