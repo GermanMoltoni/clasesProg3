@@ -1,6 +1,7 @@
 <?php
-    require_once "empleado.php";
-    require_once "fabrica.php";
+    require_once "entidades/empleado.php";
+    require_once "entidades/fabrica.php";
+    require_once "archivos.php";
     $path="../datos/empleados.txt";
     if(array_key_exists("alta",$_POST) && $_POST['alta'] == "add")
         alta($_POST,$_FILES,$path);
@@ -47,44 +48,40 @@
        unset($empleados[array_search($empleado,$empleados)]);        
        ArrayToFile($empleados,$path,"w");  
     }
-/*
-*   Guarda un array en un archivo.
-*
-*/
-    function ArrayToFile($elements,$path,$mode="a")
+
+
+    function modificar($POST,$path)
     {
-        $archivo = fopen($path,$mode);
-        foreach($elements as $element)
-            fwrite($archivo,$element->ToString());//Modificar segun uso
-        fclose($archivo);
+        baja($POST,$path);
+        alta($POST,$path);
     }
-/*
-*   Carga un archivo a un array  y lo retorna
-*
-*/
-    function GetArray($path)
+
+    function mostrarElemento($POST,$path)
     {
-        $array = array();
+        $flag=false;
         if(file_exists($path))
         {
             $archivo = fopen($path,"r");
             while(!feof($archivo))
             {
-                $datos = explode("-",fgets($archivo),7);//Modificar segun datos a cargar
+                $datos = explode("-",fgets($archivo),7);
                 if(count($datos) != 1)
                 {
-                    $empleado = new empleado($datos[0],$datos[1],$datos[3],$datos[2],$datos[5],$datos[4]);//Modificar segun datos a cargar
-                    $empleado->setPathFoto($datos[6]);//Modificar segun datos a cargar
-                    array_push($array,$empleado);
+                    $empleado = new empleado($datos[0],$datos[1],$datos[3],$datos[2],$datos[5],$datos[4]);
+                    $empleado->setPathFoto($datos[6]);
+                    if($empleado->getDni() == $_POST['dni'])
+                    {
+                        $flag = true;
+                        break;
+                    }
                 }
             }
             fclose($archivo);
-            return $array;
         }
+        if($flag)
+            return $empleado;
         return null;
     }
-
-
 
 
     function verificarFoto($FILES,$empleado)
