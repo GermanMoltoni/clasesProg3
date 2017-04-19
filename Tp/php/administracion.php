@@ -3,13 +3,13 @@
     require_once "entidades/fabrica.php";
     require_once "archivos.php";
     $path="../datos/empleados.txt";
-    if(array_key_exists("alta",$_POST) && $_POST['alta'] == "add")
+   /* if(array_key_exists("alta",$_POST) && $_POST['alta'] == "add")
         alta($_POST,$_FILES,$path);
     if(array_key_exists("baja",$_POST) && $_POST['baja'] == "baja")
         baja($_POST,$path);//modificacion($_POST);
     else
-        echo "<a href='../index.html'>Inicio</a>";
-
+        echo "<a href='../index.html'>Inicio</a>";*/
+        var_dump(json_decode($_POST['datos']) );
 
 
 /*
