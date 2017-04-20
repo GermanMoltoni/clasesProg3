@@ -3,27 +3,22 @@
     require_once "entidades/fabrica.php";
     require_once "archivos.php";
     $path="../datos/empleados.txt";
-    if(array_key_exists("alta",$_POST))
-        {$json = json_decode($_POST['alta']);//alta($_POST,$_FILES,$path);
-            var_dump($json->foto->name);
-        }
-
-    /*if(array_key_exists("baja",$_POST) && $_POST['baja'] == "baja")
-        baja($_POST,$path);//modificacion($_POST);
-    else
-        echo "<a href='../index.html'>Inicio</a>";*/
-        
-
+    if(array_key_exists("alta",$_POST) && $_POST['alta'] == "add")
+        alta($_POST,$_FILES,$path);
+    if(array_key_exists("baja",$_POST))
+        baja(json_decode($_POST['baja'])->legajo,$path);
+    
 
 /*
 *   Da el alta de un empleado
 *
 */
-    function alta($json,$FILES,$path)
+    function alta($POST,$FILES,$path)
     {
-        if(count($json->nombre) > 0 && count($json->apellido) > 0 && count($json->dni) > 0 && array_key_exists("sexo",$json) && count($json->sueldo) > 0 && count($json->legajo) > 0)
+        if(count($POST['nombre']) > 0 && count($POST['apellido']) > 0 && count($POST['dni']) > 0 && array_key_exists("sexo",$POST) && count($POST['sueldo']) > 0 && count($POST['legajo']) > 0)
         {
-            $empleado = new empleado($json->nombre,$json->apellido,$_json->dni,$json->sexo,$json->legajo,$json->sueldo);
+            $empleado = new empleado($POST['nombre'],$POST['apellido'],$_POST['dni'],$POST['sexo'],$POST['legajo'],$POST['sueldo']);
+           
             if(verificarFoto($FILES,$empleado))
             {
                 ArrayToFile([$empleado,],$path);
