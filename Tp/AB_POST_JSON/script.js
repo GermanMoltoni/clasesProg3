@@ -12,7 +12,7 @@ function baja(legajo)
 {
     var obj ={'legajo':legajo};
     var json = JSON.stringify(obj);
-    Ajax("http://localhost/clasesProg3/Tp/ABM_POST_ALTA_BAJA/php/mostrar.php","POST",testState,"baja="+json);
+    Ajax("http://localhost/clasesProg3/Tp/AB_POST_JSON/php/mostrar.php","POST",testState,"baja="+json);
     function testState(){
         if(req.readyState == 4 && req.status == 200)
             document.getElementById('miDiv').innerHTML = req.responseText+"baja";
@@ -23,7 +23,7 @@ function baja(legajo)
 
 window.onload = function load()
 {
-    Ajax("http://localhost/clasesProg3/Tp/ABM_POST_ALTA_BAJA/php/mostrar.php","POST",testState);
+    Ajax("http://localhost/clasesProg3/Tp/AB_POST_JSON/php/mostrar.php","POST",testState);
     function testState(){
         if(req.readyState == 4 && req.status == 200)
             document.getElementById('miDiv').innerHTML = req.responseText;
