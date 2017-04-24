@@ -7,3 +7,7 @@ SELECT prov.Nombre, e.Cantidad ,p.pNombre FROM productos AS p , envios AS e , pr
 SELECT SUM(e.Cantidad*p.Precio) FROM productos AS p , envios AS e WHERE p.pNumero = e.pNumero;
 SELECT SUM(e.Cantidad*p.Precio) FROM productos AS p , envios AS e WHERE e.pNumero = p.pNumero AND p.pNumero = 1 AND e.Numero = 102 ;
 SELECT p.pNumero FROM productos AS p, proveedores AS pr , envios AS e WHERE p.pNumero = e.pNumero AND e.Numero = pr.Numero AND pr.Localidad = 'Avellaneda';
+
+
+
+INSERT INTO `productos`(`pNumero`, `pNombre`, `Precio`, `Tamaño`) VALUES (4,'Chocolate',25.35,'Chico');
