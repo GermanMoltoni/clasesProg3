@@ -1,0 +1,4 @@
+SELECT * FROM productos ORDER BY pNombre;
+SELECT * FROM proveedores WHERE Localidad='Quilmes';
+SELECT * FROM envios WHERE Cantidad > 200 AND Cantidad <= 300;
+SELECT SUM(Cantidad) FROM envios;
