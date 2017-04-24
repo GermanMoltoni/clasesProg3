@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-04-2017 a las 02:24:59
+-- Tiempo de generación: 25-04-2017 a las 00:18:31
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -65,7 +65,8 @@ CREATE TABLE `productos` (
 INSERT INTO `productos` (`pNumero`, `pNombre`, `Precio`, `Tamaño`) VALUES
 (1, 'Caramelos', 1.5, 'Chico'),
 (2, 'Cigarrillos', 45.89, 'Mediano'),
-(3, 'Gaseosa', 15.8, 'Grande');
+(3, 'Gaseosa', 15.8, 'Grande'),
+(4, 'Chocolate', 25.35, 'Chico');
 
 -- --------------------------------------------------------
 
