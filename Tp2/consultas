@@ -2,3 +2,7 @@ SELECT * FROM productos ORDER BY pNombre;
 SELECT * FROM proveedores WHERE Localidad='Quilmes';
 SELECT * FROM envios WHERE Cantidad > 200 AND Cantidad <= 300;
 SELECT SUM(Cantidad) FROM envios;
+SELECT * FROM envios LIMIT 3;
+SELECT prov.Nombre, e.Cantidad ,p.pNombre FROM productos AS p , envios AS e , proveedores AS prov WHERE e.Numero = prov.Numero AND p.pNumero = e.pNumero;
+SELECT SUM(e.Cantidad*p.Precio) FROM productos AS p , envios AS e WHERE p.pNumero = e.pNumero;
+SELECT SUM(e.Cantidad*p.Precio) FROM productos AS p , envios AS e WHERE e.pNumero = p.pNumero AND p.pNumero = 1 AND e.Numero = 102 ;
