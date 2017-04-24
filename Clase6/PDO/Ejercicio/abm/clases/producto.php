@@ -77,6 +77,20 @@ class Producto
 		
 		return $resultado;
 	}
+
+	public static function GuardarDB($obj)
+	{
+		$objDB = AccesoDatos::DameUnObjetoAcceso();
+		$consulta = $objDB->RetornarConsulta("INSERT INTO producto (codigo_barra,nombre,path_foto) VALUES (:codigo_barra,:nombre,:path_foto)");
+		$consulta->bindValue(':codigo_barra', $obj->GetCodBarra(), PDO::PARAM_INT);
+		$consulta->bindValue(':codigo_barra', $obj->GetCodBarra(), PDO::PARAM_INT);
+		$consulta->bindValue(':codigo_barra', $obj->GetCodBarra(), PDO::PARAM_INT);
+		$consulta->bindValue(':codigo_barra', $obj->GetCodBarra(), PDO::PARAM_INT);
+		
+		$consulta->execute();
+		return $consulta->fetchAll( PDO::FETCH_CLASS,"Producto");
+	}
+
 	public static function TraerTodosLosProductosDB()
 	{
 		$objDB = AccesoDatos::DameUnObjetoAcceso();
