@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-04-2017 a las 14:29:23
+-- Tiempo de generación: 25-04-2017 a las 02:26:19
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `productos`
 --
-CREATE DATABASE IF NOT EXISTS `productos` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `productos`;
 
 -- --------------------------------------------------------
 
@@ -40,7 +38,8 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`codigo_barra`, `nombre`, `path_foto`) VALUES
 (123, 'Tomate', 'tomate.jpg'),
-(124, 'Manzana', 'manzana.jpg');
+(124, 'Manzana', 'manzana.jpg'),
+(125, 'Pera', 'pera.jpg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
