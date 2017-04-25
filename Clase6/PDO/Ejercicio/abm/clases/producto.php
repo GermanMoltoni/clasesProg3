@@ -83,12 +83,9 @@ class Producto
 		$objDB = AccesoDatos::DameUnObjetoAcceso();
 		$consulta = $objDB->RetornarConsulta("INSERT INTO producto (codigo_barra,nombre,path_foto) VALUES (:codigo_barra,:nombre,:path_foto)");
 		$consulta->bindValue(':codigo_barra', $obj->GetCodBarra(), PDO::PARAM_INT);
-		$consulta->bindValue(':codigo_barra', $obj->GetCodBarra(), PDO::PARAM_INT);
-		$consulta->bindValue(':codigo_barra', $obj->GetCodBarra(), PDO::PARAM_INT);
-		$consulta->bindValue(':codigo_barra', $obj->GetCodBarra(), PDO::PARAM_INT);
-		
+		$consulta->bindValue(':nombre', $obj->GetNombre(), PDO::PARAM_STR);
+		$consulta->bindValue(':path_foto', $obj->GetPathFoto(), PDO::PARAM_STR);
 		$consulta->execute();
-		return $consulta->fetchAll( PDO::FETCH_CLASS,"Producto");
 	}
 
 	public static function TraerTodosLosProductosDB()
