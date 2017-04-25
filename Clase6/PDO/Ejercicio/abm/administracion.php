@@ -2,7 +2,7 @@
 require_once ("clases/producto.php");
 
 $alta = isset($_POST["guardar"]) ? TRUE : FALSE;
-
+$baja = isset($_POST["baja"]) ? TRUE : FALSE;
 if($alta) {
 
 	//INDICO CUAL SERA EL DESTINO DEL ARCHIVO SUBIDO
@@ -70,5 +70,9 @@ if($alta) {
 			include("mensaje.php");
 		}
 	}
-}//if $alta
+}
+if($baja)
+{
+	BorrarDB($_POST['baja']);
+}
 ?>

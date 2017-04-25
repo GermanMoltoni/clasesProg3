@@ -9,6 +9,26 @@
 		
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
+<script>
+var req = new XMLHttpRequest();
+function Ajax(url,method,func,dates)
+{
+    req.open(method,url,true);
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//POST
+    req.onreadystatechange = func;
+    req.send(dates);
+}
+function baja(id)
+{
+    Ajax("http://localhost:8080/a/Clase6/PDO/Ejercicio/abm/administracion.php","POST",testState,"baja="+id);
+    function testState(){
+        if(req.readyState == 4 && req.status == 200)
+            alert(req.responseText);//document.getElementById('miDiv').innerHTML = req.responseText;
+        else
+             document.getElementById('miDiv').innerHTML = "Cargando";
+    }
+</script>
+}
 
 </head>
 <body>
@@ -30,6 +50,7 @@ echo "<table class='table'>
 				<th>  COD. BARRA </th>
 				<th>  NOMBRE     </th>
 				<th>  FOTO       </th>
+				<th> BORRAR 	</th>
 			</tr> 
 		</thead>";   	
 
@@ -39,6 +60,7 @@ echo "<table class='table'>
 					<td>".$prod->GetCodBarra()."</td>
 					<td>".$prod->GetNombre()."</td>
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
+					<td><button name='baja' onClick='baja(".$prod->getCodBarra()."')class='btn btn-danger navbar-btn'>Baja</button></td>
 				</tr>";
 	}	
 echo "</table>";		

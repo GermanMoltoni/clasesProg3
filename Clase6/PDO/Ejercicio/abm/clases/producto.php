@@ -87,7 +87,13 @@ class Producto
 		$consulta->bindValue(':path_foto', $obj->GetPathFoto(), PDO::PARAM_STR);
 		$consulta->execute();
 	}
-
+	public static function BorrarDB($id)
+	{
+		$objDB = AccesoDatos::DameUnObjetoAcceso();
+		$consulta = $objDB->RetornarConsulta("DELETE FROM productos WHERE codigo_barra=".$id);
+		$consulta->bindValue(':codigo_barra', $obj->$id, PDO::PARAM_INT);
+		$consulta->execute();
+	}
 	public static function TraerTodosLosProductosDB()
 	{
 		$objDB = AccesoDatos::DameUnObjetoAcceso();
