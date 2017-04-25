@@ -20,15 +20,16 @@ function Ajax(url,method,func,dates)
 }
 function baja(id)
 {
-    Ajax("http://localhost:8080/a/Clase6/PDO/Ejercicio/abm/administracion.php","POST",testState,"baja="+id);
+    Ajax("http://localhost/clasesProg3/Clase6/PDO/Ejercicio/abm/administracion.php","POST",testState,"baja="+id);
     function testState(){
         if(req.readyState == 4 && req.status == 200)
-            alert(req.responseText);//document.getElementById('miDiv').innerHTML = req.responseText;
-        else
-             document.getElementById('miDiv').innerHTML = "Cargando";
+            document.getElementById('productos').innerHTML = req.responseText;
+        //else
+          //   document.getElementById('miDiv').innerHTML = "Cargando";
     }
-</script>
 }
+</script>
+
 
 </head>
 <body>
@@ -38,13 +39,13 @@ function baja(id)
 		<div class="page-header">
 			<h1>Ejemplos de Grilla</h1>      
 		</div>
-		<div class="CajaInicio animated bounceInRight">
+		<div  class="CajaInicio animated bounceInRight">
 			<h1>Listado de PRODUCTOS</h1>
 
 <?php 
 
 $ArrayDeProductos = Producto::TraerTodosLosProductosDB();
-echo "<table class='table'>
+echo "<div id='productos'><table class='table'>
 		<thead>
 			<tr>
 				<th>  COD. BARRA </th>
@@ -60,10 +61,10 @@ echo "<table class='table'>
 					<td>".$prod->GetCodBarra()."</td>
 					<td>".$prod->GetNombre()."</td>
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
-					<td><button name='baja' onClick='baja(".$prod->getCodBarra()."')class='btn btn-danger navbar-btn'>Baja</button></td>
+					<td><button name='baja' onClick='baja(".$prod->getCodBarra().")'class='btn btn-danger navbar-btn'>Baja</button></td>
 				</tr>";
 	}	
-echo "</table>";		
+echo "</table></div>";		
 ?>
 		</div>
 	</div>

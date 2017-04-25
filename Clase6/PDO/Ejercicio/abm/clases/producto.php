@@ -90,8 +90,8 @@ class Producto
 	public static function BorrarDB($id)
 	{
 		$objDB = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objDB->RetornarConsulta("DELETE FROM productos WHERE codigo_barra=".$id);
-		$consulta->bindValue(':codigo_barra', $obj->$id, PDO::PARAM_INT);
+		$consulta = $objDB->RetornarConsulta("DELETE FROM producto WHERE codigo_barra = :id");
+		$consulta->bindValue(':id',$id, PDO::PARAM_INT);
 		$consulta->execute();
 	}
 	public static function TraerTodosLosProductosDB()

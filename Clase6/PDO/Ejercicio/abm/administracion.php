@@ -73,6 +73,27 @@ if($alta) {
 }
 if($baja)
 {
-	BorrarDB($_POST['baja']);
+	Producto::BorrarDB($_POST['baja']);
+	$ArrayDeProductos = Producto::TraerTodosLosProductosDB();
+echo "<table class='table'>
+		<thead>
+			<tr>
+				<th>  COD. BARRA </th>
+				<th>  NOMBRE     </th>
+				<th>  FOTO       </th>
+				<th> BORRAR 	</th>
+			</tr> 
+		</thead>";   	
+
+	foreach ($ArrayDeProductos as $prod){
+
+		echo " 	<tr>
+					<td>".$prod->GetCodBarra()."</td>
+					<td>".$prod->GetNombre()."</td>
+					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
+					<td><button name='baja' onClick='baja(".$prod->getCodBarra().")'class='btn btn-danger navbar-btn'>Baja</button></td>
+				</tr>";
+	}	
+echo "</table>";
 }
 ?>
