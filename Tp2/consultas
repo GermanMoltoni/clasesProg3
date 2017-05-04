@@ -8,6 +8,8 @@ SELECT SUM(e.Cantidad*p.Precio) FROM productos AS p , envios AS e WHERE p.pNumer
 SELECT SUM(e.Cantidad*p.Precio) FROM productos AS p , envios AS e WHERE e.pNumero = p.pNumero AND p.pNumero = 1 AND e.Numero = 102 ;
 SELECT p.pNumero FROM productos AS p, proveedores AS pr , envios AS e WHERE p.pNumero = e.pNumero AND e.Numero = pr.Numero AND pr.Localidad = 'Avellaneda';
 
-
-
 INSERT INTO `productos`(`pNumero`, `pNombre`, `Precio`, `Tamaño`) VALUES (4,'Chocolate',25.35,'Chico');
+INSERT INTO `proveedores`(`Numero`) VALUES (120)
+INSERT INTO `proveedores`(`Numero`, `Nombre`, `Localidad`) VALUES (107,'Rosales','La Plata')
+UPDATE `productos` SET `Precio`=97.5 WHERE 'Tamaño'='grande'
+UPDATE `productos` SET `Tamaño`='Mediano' WHERE Tamaño='Chico' AND pNumero IN (SELECT pNumero FROM envios WHERE Cantidad >= 300)
