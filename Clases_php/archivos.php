@@ -29,8 +29,10 @@ class Archivo{
         return false;
     }
 
-    function ToJSON($datos){
-        $this->ToFile(json_encode($datos));
+    function ToJSON($datos,$mode="w"){
+        $file = fopen($this->_path,$mode);
+        fwrite($file,json_encode($datos));
+        fclose($file);
     }
 
     function GetJson(){
