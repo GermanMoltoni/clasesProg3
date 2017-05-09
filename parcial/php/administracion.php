@@ -9,7 +9,7 @@
     if(array_key_exists("signUp",$_POST))
         echo CargaUsuario($_POST,$path);
     if(array_key_exists("baja",$_POST))
-        BorrarUsuario($_POST['baja'],$path);
+       BorrarUsuario($_POST['baja'],$path);
     if(array_key_exists("altaConteiner",$_POST))
        altaConteiner($_POST,$_FILES);
 

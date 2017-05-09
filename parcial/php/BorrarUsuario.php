@@ -9,10 +9,12 @@ function BorrarUsuario($email,$path)
         foreach($usuarios as $usuario)
         {
             if($usuario->Equals($email))
+            {
                 break;
+            }
         }
-       unset($usuarios[array_search($usuario,$usuarios)]); 
-       var_dump($usuarios);       
+
+       unset($usuarios[array_search($usuario,$usuarios)]);        
        $archivo->ToFile($usuarios,"w"); 
     }
 

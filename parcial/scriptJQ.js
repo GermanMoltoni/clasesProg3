@@ -53,7 +53,7 @@ function baja(obj){
     $.ajax({
             'url':'./php/administracion.php',
             'type':'POST',
-             data:{'baja':123}
+             data:{'baja':obj}
         }).done(function(data){
            mostrarGrilla();
         }

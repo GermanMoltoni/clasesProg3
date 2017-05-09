@@ -29,7 +29,7 @@ function verificarFoto($FILES,$conteiner)
                     return false;
                 if(move_uploaded_file($FILES['file']['tmp_name'],$pathFotos.$nuevoPath))
                 {
-                    $conteiner->setFoto($pathFotos.$nuevoPath);
+                    $conteiner->setFoto($nuevoPath);
                     return true;
                 }
             }
