@@ -12,14 +12,13 @@ if($usuario=="octavio@admin.com.ar" && $clave=="1234")
 	$_SESSION['registrado'] = $usuario;
 	if($recordar=="true")
 	{
-		//creo la cookie del usuario
+		setcookie("user",$usuario,time() + (86400 * 30),"/");
 		
 	}else
 	{
-		//borro la cookie del usuario
+		setcookie("user",$_SESSION['registrado'],time() - 3600);
 		
 	}
-	// creo la variable de $_SESSION
 	 
 	$retorno="ingreso";
 

@@ -11,7 +11,6 @@ $.ajax({
 	type:"post",
 	data:{'usuario':varUsuario,'clave':varClave,'recordarme':recordar}
 }).done(function(retorno){
-	console.log(retorno);
 	if(retorno == "ingreso")
 	{
 		MostarBotones();
@@ -32,9 +31,13 @@ $.ajax({
 }
 function deslogear()
 {	
-	
-	//	url:"php/deslogearUsuario.php",
-	//	type:"post"		
+	$.ajax({
+	url:"php/deslogearUsuario.php"
+	}).always(function(){
+		$("#botonesABM").html("");
+		MostarLogin();
+	});	
+
 
 }
 function MostarBotones()
