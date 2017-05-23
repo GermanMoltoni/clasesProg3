@@ -13,3 +13,5 @@ INSERT INTO `proveedores`(`Numero`) VALUES (120)
 INSERT INTO `proveedores`(`Numero`, `Nombre`, `Localidad`) VALUES (107,'Rosales','La Plata')
 UPDATE `productos` SET `Precio`=97.5 WHERE 'Tamaño'='grande'
 UPDATE `productos` SET `Tamaño`='Mediano' WHERE Tamaño='Chico' AND pNumero IN (SELECT pNumero FROM envios WHERE Cantidad >= 300)
+DELETE FROM `productos` WHERE pNumero = 1
+DELETE FROM `proveedores` WHERE `Numero` NOT IN (SELECT Numero FROM envios)
