@@ -1,0 +1,3 @@
+instalar composer
+composer require slim/slim "^3.0"
+ver postman
