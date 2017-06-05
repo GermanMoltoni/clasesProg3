@@ -18,13 +18,18 @@ $app->get('/cd', function (Request $request, Response $response) {
     return $response;
 });
 $app->post('/crearCd', function (Request $request, Response $response) {
-    $array = $request->getQueryParams();
+    $array = $request->getParsedBody();
+    $files = $request->getUploadedFiles();
+     
     $cd = new cd();
     $cd->titulo=$array['titulo'];
     $cd->cantante=$array['cantante'];
-    $cd->año=$array['año'];
+    $cd->año=$array['anio'];
+    $cd->foto=$array['titulo'].($files['file']->getClientFilename());
+    $files['file']->moveTo('./uploads/'.$cd->foto);
+    //$response->getBody()->write(image_type_to_extension(exif_imagetype($files['file']->getClientFileName())) );
+    
     $cd->InsertarElCd();
-    //$response->getBody()->write($request->get);
 
     return $response;
 });

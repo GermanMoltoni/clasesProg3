@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+    function btnSend(){
+       
+    $.ajax({
+		url:"./index.php/crearCd",
+		type:"post",
+		data:form()
+	}).done(
+	);
+       
+    }
+  
+        function form(){
+    var formData = new FormData();
+    formData.append('titulo',$("#titulo").val());
+    formData.append('cantante',$("#cantante").val());
+    formData.append('anio',$("#anio").val());
+    formData.append('file',document.getElementById('file').files[0]);
+    return formData;
+}
+   
+    
+    </script>
+</head>
+<body>
+    <form method='POST'onsubmit="btnSend();return false;">
+         <div class="form-group col-md-4 col-sm-4">
+                <label for="nombre">ID</label>
+                <input type="text" class="form-control" placeholder="" tabindex="1" id="id" name="codBarras">
+            </div>
+            <div class="form-group col-md-4 col-sm-4">
+                <label for="apellido">Cantante</label>
+                <input type="text" class="form-control" placeholder="" tabindex="2" id="cantante" name="cantidad">
+            </div>
+            <div class="form-group col-md-4 col-sm-4">
+                <label for="dni">Titulo</label>
+                <input class="form-control" type="text" placeholder="22.222.222" id="titulo" name="dni">
+            </div>
+ 
+             <div class="form-group col-md-3 col-sm-2"> 
+                <label for="legajo">Año</label>
+                <input type="text"  class="form-control" id="anio" name="legajo">
+            </div>
+            <div class="form-group col-md-4 col-sm-4">
+                <label for="foto">Imagen</label>
+                <input type="hidden" name="MAX_FILE_SIZE" value="1024000" />
+                <input type="file" class="form-control" accept="image/*" id="file" name="foto"><br>
+            </div>
+            <div class="btn-group col-md-2 col-sm-2">
+            <button type="submit" class="form-control btn btn-success" name="alta" id="btnSend"  value="add">Add</button>
+            </div>
+ 
+ </div>
+
+    </form>
+</body>
+</html>

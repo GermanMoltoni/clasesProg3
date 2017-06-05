@@ -5,7 +5,7 @@ class cd
  	public $titulo;
   	public $cantante;
   	public $año;
-
+public $foto;
   	public function BorrarCd()
 	 {
 	 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
@@ -49,7 +49,7 @@ class cd
 	 public function InsertarElCd()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into cds (titel,interpret,jahr)values('$this->titulo','$this->cantante','$this->año')");
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into cds (titel,interpret,jahr,foto)values('$this->titulo','$this->cantante','$this->año','$this->foto')");
 				$consulta->execute();
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 				
