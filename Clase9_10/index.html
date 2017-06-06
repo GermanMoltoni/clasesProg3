@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script>
     function btnSend(){
-       
     $.ajax({
 		url:"./index.php/crearCd",
 		type:"post",
+        processData:false,
+        contentType:false,
 		data:form()
-	}).done(
-	);
+	});
        
     }
   
@@ -28,8 +29,7 @@
     </script>
 </head>
 <body>
-    <form method='POST'onsubmit="btnSend();return false;">
-         <div class="form-group col-md-4 col-sm-4">
+          <div class="form-group col-md-4 col-sm-4">
                 <label for="nombre">ID</label>
                 <input type="text" class="form-control" placeholder="" tabindex="1" id="id" name="codBarras">
             </div>
@@ -52,11 +52,11 @@
                 <input type="file" class="form-control" accept="image/*" id="file" name="foto"><br>
             </div>
             <div class="btn-group col-md-2 col-sm-2">
-            <button type="submit" class="form-control btn btn-success" name="alta" id="btnSend"  value="add">Add</button>
+            <button type="submit" class="form-control btn btn-success" name="alta" id="btnSend" onclick="btnSend()" value="add">Add</button>
             </div>
  
  </div>
 
-    </form>
+   
 </body>
 </html>
