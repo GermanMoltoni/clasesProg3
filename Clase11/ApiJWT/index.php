@@ -35,7 +35,7 @@ $app->get('[/]', function (Request $request, Response $response) {
                  'edad'=>12
                  );
     $token=AutentificadorJWT::CrearToken($datos);
-      var_dump(AutentificadorJWT::VerificarToken($token));
+      print_r(AutentificadorJWT::VerificarToken($token));
     return $response;//$response->withJson($token);
 
 });
