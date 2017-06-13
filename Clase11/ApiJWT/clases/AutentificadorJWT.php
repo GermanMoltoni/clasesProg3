@@ -21,7 +21,11 @@ class AutentificadorJWT
         return JWT::encode($payload,self::$claveSecreta);
     }
     static function VerificarToken($jwt){
-        $decodificado = JWT::decode($jwt,self::$claveSecreta,['HS256']);
+      /*  try{*/
+            $decodificado = JWT::decode($jwt,self::$claveSecreta,['HS256']);
+       /* }
+        catch(Exception $e)
+           {$decodificado=$e;} */
         return $decodificado;
     }
 }

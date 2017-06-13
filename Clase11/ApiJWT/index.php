@@ -28,24 +28,31 @@ $app = new \Slim\App(["settings" => $config]);
 //require_once "saludo.php";
 
 
-$app->get('[/]', function (Request $request, Response $response) {    
-    $response->getBody()->write("GET => Bienvenido!!! ,a SlimFramework");
+$app->get('/crearToken', function (Request $request, Response $response) {    
     $datos=array('nombre'=>'julian',
                  'apellido'=>'perez',
                  'edad'=>12
                  );
     $token=AutentificadorJWT::CrearToken($datos);
-      print_r(AutentificadorJWT::VerificarToken($token));
-    return $response;//$response->withJson($token);
+    return $response->withJson($token);
 
 });
 
-$app->post('[/]', function (Request $request, Response $response) {   
-    $response->getBody()->write("POST => Bienvenido!!! ,a SlimFramework");
-    return $response;
+$app->get('/verificarToken', function (Request $request, Response $response) {  
+     $datos=array('nombre'=>'julian',
+                 'apellido'=>'perez',
+                 'edad'=>12
+                 );
+    $token=AutentificadorJWT::CrearToken($datos);
+    $return = AutentificadorJWT::VerificarToken($token);
+    return $response->withJson($return);
 
 });
+$app->get('/verificarTokenViejo', function (Request $request, Response $response) {  
+    $return = AutentificadorJWT::VerificarToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0OTczMTQ5MjUsImV4cCI6MTQ5NzMxNDk4NSwiZGF0YSI6eyJub21icmUiOiJqdWxpYW4iLCJhcGVsbGlkbyI6InBlcmV6IiwiZWRhZCI6MTJ9LCJhcHAiOiJBcGkgUmVzdCBKV1QifQ.9bXaqMibbabeYll5GX7xez5uA5j7d15g4RY_Z-TDXDM");
+    return $response->withJson($return);
 
+});
 $app->put('[/]', function (Request $request, Response $response) {  
     $response->getBody()->write("PUT => Bienvenido!!! ,a SlimFramework");
     return $response;
