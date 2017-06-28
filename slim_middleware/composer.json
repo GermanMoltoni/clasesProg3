@@ -1,0 +1,8 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "oscarotero/psr7-middlewares": "^3.20",
+        "mobiledetect/mobiledetectlib": "^2.8",
+        "willdurand/geocoder": "^3.3"
+    }
+}
