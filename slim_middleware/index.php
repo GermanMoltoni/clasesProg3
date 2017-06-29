@@ -11,6 +11,8 @@ require './vendor/autoload.php';
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
 $app = new \Slim\App(["settings" => $config]);
+ 
+
 $app->get('/', function (Request $request, Response $response) {
  $data = Geolocate::getLocation($request)->first();
 
@@ -28,7 +30,7 @@ $image = Image::fromFile('alonso.jpg')
    return $response->withJson(array('foto'=>$image->base64()));
 });
 
-
+ 
 $app->run();
 
 
