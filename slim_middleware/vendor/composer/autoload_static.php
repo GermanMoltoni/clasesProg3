@@ -30,6 +30,7 @@ class ComposerStaticInit49d20674d83d18c9e90726ec5362b66e
         array (
             'Ivory\\HttpAdapter\\' => 18,
             'Interop\\Container\\' => 18,
+            'Imagecow\\' => 9,
         ),
         'F' => 
         array (
@@ -65,6 +66,10 @@ class ComposerStaticInit49d20674d83d18c9e90726ec5362b66e
         'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
+        ),
+        'Imagecow\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/imagecow/imagecow/src',
         ),
         'FastRoute\\' => 
         array (

@@ -5,7 +5,7 @@ use Psr7Middlewares\Middleware;
 use Psr7Middlewares\Middleware\ClientIp;
 use Psr7Middlewares\Middleware\DetectDevice;
 use Psr7Middlewares\Middleware\Geolocate;
-
+use Imagecow\Image;
 require './vendor/autoload.php';
 
 $config['displayErrorDetails'] = true;
@@ -19,6 +19,16 @@ $app->get('/', function (Request $request, Response $response) {
 
     
 })->add(Middleware::DetectDevice())->add(Middleware::Geolocate())->add(Middleware::ClientIp());
+$app->get('/foto', function (Request $request, Response $response) {
+$image = Image::fromFile('alonso.jpg')
+    
+    ->resizeCrop(80, 50, 'center', 'middle');
+/*->format('png')->save('my-new-image.png')*/
+   // ->show();
+   return $response->withJson(array('foto'=>$image->base64()));
+});
+
+
 $app->run();
 
 

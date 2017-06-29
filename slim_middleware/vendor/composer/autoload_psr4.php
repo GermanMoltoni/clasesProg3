@@ -13,5 +13,6 @@ return array(
     'Psr7Middlewares\\' => array($vendorDir . '/oscarotero/psr7-middlewares/src'),
     'Ivory\\HttpAdapter\\' => array($vendorDir . '/egeloen/http-adapter/src'),
     'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
+    'Imagecow\\' => array($vendorDir . '/imagecow/imagecow/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
 );
