@@ -30,7 +30,20 @@ $image = Image::fromFile('alonso.jpg')
    return $response->withJson(array('foto'=>$image->base64()));
 });
 
- 
+
+$app->get('/images/picture.jpg',function(Request $request, Response $response){});
+
+ $app->post('/f', function (Request $request, Response $response) {
+ $generator = Middleware\ImageTransformer::getGenerator($request);
+
+        //Use the generator
+        return $response->getBody()->write('<img src="'.$generator('images/picture.jpg', 'large.').'">');
+ })->add(
+     Middleware::imageTransformer([   // The available sizes of the images.
+            './medium.' => 'resize,500|format,jpg', //Resize the image to 500px and convert to jpg
+            './large.' => 'resize,1000|format,jpg', //Transform only images inside "pictures" directory (example: /images/pcitures/large.avatar.jpg)
+        ])
+ );
 $app->run();
 
 
