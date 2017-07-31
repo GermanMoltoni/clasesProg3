@@ -3,6 +3,8 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use Psr7Middlewares\Middleware;
 use Psr7Middlewares\Middleware\ClientIp;
+use Psr7Middlewares\Middleware\ImageTransformer;
+
 use Psr7Middlewares\Middleware\DetectDevice;
 use Psr7Middlewares\Middleware\Geolocate;
 use Imagecow\Image;
@@ -22,12 +24,15 @@ $app->get('/', function (Request $request, Response $response) {
     
 })->add(Middleware::DetectDevice())->add(Middleware::Geolocate())->add(Middleware::ClientIp());
 $app->get('/foto', function (Request $request, Response $response) {
-$image = Image::fromFile('alonso.jpg')
+    $path = 'IMG_3785.jpg';
+
+$image = Image::fromFile($path)
     
-    ->resizeCrop(80, 50, 'center', 'middle');
-/*->format('png')->save('my-new-image.png')*/
-   // ->show();
-   return $response->withJson(array('foto'=>$image->base64()));
+        ->resize('50%','50%')->quality(80)
+    ->save($path);
+
+
+   return $response->withJson(array('foto'=>filesize('s'.$path)/ pow(1024, 2)));
 });
 
 
@@ -38,16 +43,17 @@ $app->get('/images/picture.jpg',function(Request $request, Response $response){}
 
 
 
- $app->post('/f', function (Request $request, Response $response) {
- $generator = Middleware\ImageTransformer::getGenerator($request);
+ $app->post('/f',function(Request $request, Response $response){
+    
+    var_dump(Middleware::ImageTransformer([   // The available sizes of the images.
+            './images/small.' => 'resizeCrop,50,50', //Creates a 50x50 thumb of any image prefixed with "small." (example: /images/small.avatar.jpg)
+            //'./imagesmedium.' => 'resize,500|format,jpg', //Resize the image to 500px and convert to jpg
+            //'./images/large.' => 'resize,1000|format,jpg', //Transform only images inside "pictures" directory (example: /images/pcitures/large.avatar.jpg)
+        ]));
 
-        //Use the generator
-        $response->getBody()->write('<img src="'.$generator('images/picture.jpg', 'small.').'">');
- })->add(Middleware::imageTransformer([   // The available sizes of the images.
-            'small.' => 'resizeCrop,50,50', //Creates a 50x50 thumb of any image prefixed with "small." (example: /images/small.avatar.jpg)
-            'medium.' => 'resize,500|format,jpg', //Resize the image to 500px and convert to jpg
-            'pictures/large.' => 'resize,1000|format,jpg', //Transform only images inside "pictures" directory (example: /images/pcitures/large.avatar.jpg)
-        ]))->add(Middleware::basePath('./images'));
+
+
+ });
 
         
        
